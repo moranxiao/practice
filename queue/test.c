@@ -14,12 +14,8 @@ void test()
 	printf("%d ", QueueFront(&q));
 	printf("%d ", QueueBack(&q));
 	QueuePop(&q);
-	QueuePop(&q);
-	QueuePop(&q);
-	QueuePop(&q);
-	QueuePop(&q);
-	QueuePop(&q);
-	//printf("%d ", QueueFront(&q));
+
+	printf("%d ", QueueFront(&q));
 }
 
 int main()

@@ -18,15 +18,16 @@ void QueuePush(Queue* q, QDataType data)
 		perror("malloc fail");
 		exit(-1);
 	}
-	newnode->next = q->front;
+	newnode->next = NULL;
 	newnode->data = data;
-	if (q->front == NULL)
+	if (q->rear == NULL)
 	{
 		q->front = q->rear = newnode;
 	}
 	else
 	{
-		q->front = newnode;
+		q->rear->next = newnode;
+		q->rear = newnode;
 	}
 }
 
