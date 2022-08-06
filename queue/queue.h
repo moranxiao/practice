@@ -1,6 +1,3 @@
-#pragma warning(disable:4996)
-#pragma once
-
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
@@ -17,6 +14,7 @@ typedef struct Queue
 {
 	QNode* front;
 	QNode* rear;
+	int sz;
 }Queue;
 
 //≥ı ºªØ

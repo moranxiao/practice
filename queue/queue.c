@@ -1,5 +1,3 @@
-#pragma warning(disable:4996)
-
 #include "queue.h"
 
 void QueueInit(Queue* q)
@@ -7,6 +5,7 @@ void QueueInit(Queue* q)
 	assert(q);
 	q->front = NULL;
 	q->rear = NULL;
+	q->sz = 0;
 }
 
 void QueuePush(Queue* q, QDataType data)
@@ -29,6 +28,7 @@ void QueuePush(Queue* q, QDataType data)
 		q->rear->next = newnode;
 		q->rear = newnode;
 	}
+	q->sz++;
 }
 
 void QueuePop(Queue* q)
@@ -42,7 +42,7 @@ void QueuePop(Queue* q)
 	{
 		q->rear = NULL;
 	}
-
+	q->sz--;
 }
 
 QDataType QueueFront(Queue* q)
@@ -71,13 +71,15 @@ int QueueEmpty(Queue* q)
 void QueueDestroy(Queue* q)
 {
 	assert(q);
-	assert(q->front);
+	if (QueueEmpty(q))
+		return;
 	QNode* cur = q->front;
 	while (cur)
 	{
 		QNode* del = cur;
-		free(del);
 		cur = cur->next;
+		free(del);
 	}
 	q->rear = NULL;
+	q->sz = 0;
 }
