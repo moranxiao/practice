@@ -1,5 +1,4 @@
 #pragma warning(disable:4996)
-//#pragma pack(4)
 #include <stdio.h>
 struct s1
 {
