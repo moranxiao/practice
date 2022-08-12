@@ -2,20 +2,20 @@
 #include <assert.h>
 #include <stdlib.h>
 
-typedef int QDataType;
-
-typedef struct QListNode
-{
-	QDataType data;
-	struct QListNode* next;
-}QNode;
-
-typedef struct Queue
-{
-	QNode* front;
-	QNode* rear;
-	int sz;
-}Queue;
+//typedef int QDataType;
+//
+//typedef struct QListNode
+//{
+//	QDataType data;
+//	struct QListNode* next;
+//}QNode;
+//
+//typedef struct Queue
+//{
+//	QNode* front;
+//	QNode* rear;
+//	int sz;
+//}Queue;
 
 //≥ı ºªØ
 void QueueInit(Queue* q);
