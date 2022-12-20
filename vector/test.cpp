@@ -8,6 +8,6 @@ using namespace std;
 
 int main()
 {
-	yyx::vector_test3();
+	yyx::vector_test5();
 	return 0;
 }
