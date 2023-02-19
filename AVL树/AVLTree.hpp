@@ -103,7 +103,7 @@ struct AVLTree {
 				else if (parent->_left->_bf == 1)
 				{
 					RotateRL(parent);
-				}
+				} 
 				else
 					assert(false);
 				break;
@@ -112,6 +112,10 @@ struct AVLTree {
 			{
 				assert(false);
 			}
+		}
+		while (_root->_parent != nullptr)
+		{
+			_root = _root->_parent;
 		}
 		return true;
 	}
