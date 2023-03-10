@@ -1,0 +1,85 @@
+#include "tree.h"
+
+void QueueInit(Queue* q)
+{
+	assert(q);
+	q->front = NULL;
+	q->rear = NULL;
+	q->sz = 0;
+}
+
+void QueuePush(Queue* q, QDataType data)
+{
+	assert(q);
+	QNode* newnode = (QNode*)malloc(sizeof(QNode));
+	if (newnode == NULL)
+	{
+		perror("malloc fail");
+		exit(-1);
+	}
+	newnode->next = NULL;
+	newnode->data = data;
+	if (q->rear == NULL)
+	{
+		q->front = q->rear = newnode;
+	}
+	else
+	{
+		q->rear->next = newnode;
+		q->rear = newnode;
+	}
+	q->sz++;
+}
+
+void QueuePop(Queue* q)
+{
+	assert(q);
+	assert(q->front);
+	QNode* del = q->front;
+	q->front = q->front->next;
+	free(del);
+	if (q->front == NULL)
+	{
+		q->rear = NULL;
+	}
+	q->sz--;
+}
+
+QDataType QueueFront(Queue* q)
+{
+	assert(q);
+	assert(q->front);
+	return q->front->data;
+}
+
+QDataType QueueBack(Queue* q)
+{
+	assert(q);
+	assert(q->rear);
+	return q->rear->data;
+}
+
+int QueueEmpty(Queue* q)
+{
+	assert(q);
+	if (q->front == NULL)
+		return 1;
+	else
+		return 0;
+}
+
+void QueueDestroy(Queue* q)
+{
+	assert(q);
+	if (QueueEmpty(q))
+		return;
+	QNode* cur = q->front;
+	while (cur)
+	{
+		QNode* del = cur;
+		cur = cur->next;
+		free(del);
+	}
+	q->rear = NULL;
+	q->sz = 0;
+}
